@@ -1,6 +1,6 @@
 # Solutions to the whitelisting problem
 
-There are differend ways to whitelist users. This repo demonstrates two different implementations.
+There are differend ways to whitelist users. This repo demonstrates three different options.
 
 The contracts and the tests both are named `Imp[index][whitelistingMethod].[js/sol]`
 
