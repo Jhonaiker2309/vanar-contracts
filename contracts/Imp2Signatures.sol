@@ -67,8 +67,8 @@ contract Imp2Signatures {
     /// @notice Splits a signature in it's components
     /// @param signature signature to be split
     /// @return r first number produced by the ECDSA signature
-    /// @return v second number produced by the ECDSA signature
-    /// @return s recovery identifier used by the ECDSA signature
+    /// @return s second number produced by the ECDSA signature
+    /// @return v recovery identifier used by the ECDSA signature
     function splitSignature(bytes memory signature)
         public
         pure
