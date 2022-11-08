@@ -12,8 +12,9 @@ More implementations will be added with time.
 
 2 - signatures
 
+3 - merkle trees
+
 ### Implementations to be added:
 
-- merkle trees
 - Ownership of NFTs
 - Balance of token amount
