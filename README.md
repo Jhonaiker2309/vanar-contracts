@@ -5,6 +5,7 @@ There are differend ways to whitelist users. This repo demonstrates two differen
 More implementations will be added with time.
 
 1 - traditional mapping
+
 2 - signatures
 
 Future implementations to be added:
