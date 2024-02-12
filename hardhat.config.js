@@ -1,23 +1,18 @@
-require("@nomicfoundation/hardhat-toolbox");
+require('@typechain/hardhat');
+require('@nomiclabs/hardhat-ethers');
+require('hardhat-deploy');
+require('@nomiclabs/hardhat-waffle');
+require('@nomiclabs/hardhat-etherscan');
+require('hardhat-contract-sizer');
+require('solidity-coverage');
 
-/** @type import('hardhat/config').HardhatUserConfig */
-module.exports = {
-  solidity: "0.8.9",
-};
+const env = require('dotenv');
 
-/*import '@typechain/hardhat'
-import '@nomiclabs/hardhat-ethers'
-import 'hardhat-deploy'
-import '@nomiclabs/hardhat-waffle'
-import '@nomiclabs/hardhat-etherscan'
-import 'hardhat-contract-sizer'
-import 'solidity-coverage'
-import * as env from 'dotenv'
-
-env.config()
+env.config();
 
 const DEFAULT_COMPILER_SETTINGS = {
   version: '0.8.9',
+  defaultNetwork: "sepolia",
   settings: {
     optimizer: {
       enabled: true,
@@ -27,7 +22,7 @@ const DEFAULT_COMPILER_SETTINGS = {
       bytecodeHash: 'none',
     },
   },
-}
+};
 
 const config = {
   networks: {
@@ -35,8 +30,8 @@ const config = {
       allowUnlimitedContractSize: false,
     },
     sepolia: {
-      url: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
-      accounts: [process.env.INFURA_PRIVKEY || '']
+      url: `https://sepolia.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      accounts: [process.env.INFURA_PRIVKEY],
     }
   },
   solidity: {
@@ -55,12 +50,17 @@ const config = {
     user1: 1,
     user2: 2,
   },
-}
+  sourcify: {
+    // Disabled by default
+    // Doesn't need an API key
+    enabled: true
+  }    
+};
 
 if (process.env.ETHERSCAN_API_KEY) {
   config.etherscan = {
     apiKey: process.env.ETHERSCAN_API_KEY,
-  }
+  };
 }
 
-export default config*/
+module.exports = config;

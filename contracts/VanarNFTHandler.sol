@@ -12,6 +12,9 @@ contract VanarNFTHandler is ERC1155 {
     // Address of the deployer
     address public owner;
 
+    // The name of the Collection
+    string public name = "Vanar Collection";
+
     // Mapping that checks if an address already minted an NFT with the given timestamp id
     mapping(address => mapping(uint256 => bool)) public _alreadyMintedTimestampNFT;
 

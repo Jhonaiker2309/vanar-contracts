@@ -1,20 +1,16 @@
-import { run } from "hardhat";
+const { run } = require("hardhat");
 
 const CONTRACT_NAME = 'VanarNFTHandler';
 
-const deploy = async ({getNamedAccounts, deployments}) => {
-  const { deploy } = deployments;
-  const { deployer } = await getNamedAccounts();
+const deploy = async () => {
+  const VanarNFTHandler = await ethers.getContractFactory(CONTRACT_NAME);
 
-  const vanarNFTHandler = await deploy(CONTRACT_NAME, {
-    from: deployer,
-    log: true,
-    skipIfAlreadyDeployed: true,
-  });
+  const vanarNFTHandler = await VanarNFTHandler.deploy()
 
-    await run("verify:verify", {
-        address: vanarNFTHandler.address,
-    })
+  await vanarNFTHandler.deployed();
+
+	console.log("Contract deployed to deployed to:", vanarNFTHandler.address);
+
 };
 
 deploy()
