@@ -21,17 +21,16 @@ contract VanarNFTHandler is ERC1155 {
     // An event that checks if an NFT was minted
     event MintMessage(address minter, uint256 timestampId);
 
-    constructor() ERC1155("https://myapi.com/api/token/{id}.json") {
+    constructor() ERC1155("https://vanar-backend.vercel.app/token/{id}.json") {
         owner = msg.sender;
     }    
 
     /// @notice A function that checks if the user hasn't minted an NFT with the given id and that checks if the user has a valid signature
     //          given by the owner, in case that that's true the user can mint an NFT     
     /// @param _timestampId The id of the timestamp of the nft
-    /// @param _nonce A secret string that will be used as a password
     /// @param signature A signature give for the owner to allow the user to mint
-    function mint(uint256 _timestampId, string memory _nonce, bytes memory signature) checkIfUserAlreadyMintedTimestampNFT(msg.sender, _timestampId) public {
-        require(verify(msg.sender, _timestampId, _nonce, signature) == true, "Signature not valid");      
+    function mint(uint256 _timestampId, bytes memory signature) checkIfUserAlreadyMintedTimestampNFT(msg.sender, _timestampId) public {
+        require(verify(msg.sender, _timestampId, signature) == true, "Signature not valid");      
         _alreadyMintedTimestampNFT[msg.sender][_timestampId] = true;  
         _mint(msg.sender, _timestampId, 1, "");
         emit MintMessage(msg.sender, _timestampId);
@@ -40,14 +39,12 @@ contract VanarNFTHandler is ERC1155 {
     /// @notice Hashes a user address, a random number, the string of an nft and a secret string along with the address of this contract
     /// @param _userAddress The address of the user
     /// @param _timestampId The id of the timestamp of the nft
-    /// @param _nonce A secret string that will be used as a password
     /// @return bytes32 resulting hash. To be signed and given to the user.
     function getHash(
         address _userAddress,
-        uint256 _timestampId,
-        string memory _nonce
+        uint256 _timestampId
     ) public view returns (bytes32) {
-        return keccak256(abi.encodePacked(_userAddress,_timestampId, _nonce ,this));
+        return keccak256(abi.encodePacked(_userAddress,_timestampId,this));
     }
 
     /// @notice Hashes toguether a string and a hash
@@ -70,16 +67,14 @@ contract VanarNFTHandler is ERC1155 {
     /// @dev The message to validate the signature is generated on the fly with a random number, the string of an NFT, and this contract's address.
     /// @param _userAddress  The address of the user
     /// @param _timestampId The id of the timestamp of the nft
-    /// @param _nonce A secret string that will be used as a password
     /// @param signature Signature to be verified
     /// @return bool Boolean value indicating whether the signature is valid or not
     function verify(
         address _userAddress,
         uint256 _timestampId,
-        string memory _nonce,
         bytes memory signature
     ) public view returns (bool) {
-        bytes32 messageHash = getHash(_userAddress, _timestampId, _nonce);
+        bytes32 messageHash = getHash(_userAddress, _timestampId);
         bytes32 ethSignedMessageHash = getEthSignedMessageHash(messageHash);
         return recoverSigner(ethSignedMessageHash, signature) == owner;
 }
@@ -132,6 +127,12 @@ contract VanarNFTHandler is ERC1155 {
         }
 
         // implicitly return (r, s, v)
+    }
+
+    /// @param newBaseURI The new ERC1155 of the tokens
+    function setBaseURI(string memory newBaseURI) external {
+        require(owner == msg.sender, "Only the owner can do this");
+        _setURI(newBaseURI);
     }
 
     /// @notice Modifier that checks if user already minted the NFT of the timestamp that he wants
