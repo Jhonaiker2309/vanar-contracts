@@ -11,7 +11,7 @@ const env = require('dotenv');
 env.config();
 
 const DEFAULT_COMPILER_SETTINGS = {
-  version: '0.8.9',
+  version: '0.8.19',
   defaultNetwork: "sepolia",
   settings: {
     optimizer: {

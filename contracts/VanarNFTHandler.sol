@@ -1,28 +1,31 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.19;
 
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
 /// @title An ERC1155 with signatures contract
 /// @author Jhonaiker Blanco
 /// @notice This code has not been audited. Use at your own peril.
-contract VanarNFTHandler is ERC1155 {
+contract VanarNFTHandler is ERC1155, Ownable {
 
-    // Address of the deployer
-    address public owner;
+    using Strings for uint256;
+
+    // Signature already used
+    mapping(bytes => bool) private isSignatureUsed;
 
     // The name of the Collection
     string public name = "Vanar Collection";
 
+
     // Mapping that checks if an address already minted an NFT with the given timestamp id
-    mapping(address => mapping(uint256 => bool)) public _alreadyMintedTimestampNFT;
+    mapping(address => mapping(uint256 => bool)) private alreadyMintedTimestampNFT;
 
     // An event that checks if an NFT was minted
     event MintMessage(address minter, uint256 timestampId);
 
-    constructor() ERC1155("https://vanar-backend.vercel.app/token/{id}.json") {
-        owner = msg.sender;
+    constructor() ERC1155("https://vanar-backend.vercel.app/token") {
     }    
 
     /// @notice A function that checks if the user hasn't minted an NFT with the given id and that checks if the user has a valid signature
@@ -30,8 +33,10 @@ contract VanarNFTHandler is ERC1155 {
     /// @param _timestampId The id of the timestamp of the nft
     /// @param signature A signature give for the owner to allow the user to mint
     function mint(uint256 _timestampId, bytes memory signature) checkIfUserAlreadyMintedTimestampNFT(msg.sender, _timestampId) public {
-        require(verify(msg.sender, _timestampId, signature) == true, "Signature not valid");      
-        _alreadyMintedTimestampNFT[msg.sender][_timestampId] = true;  
+        require(verify(_timestampId, signature) == true, "Signature not valid");  
+        require(isSignatureUsed[signature] == false, "Signature was already used");    
+        alreadyMintedTimestampNFT[msg.sender][_timestampId] = true;  
+        isSignatureUsed[signature] = true;
         _mint(msg.sender, _timestampId, 1, "");
         emit MintMessage(msg.sender, _timestampId);
     }
@@ -64,19 +69,17 @@ contract VanarNFTHandler is ERC1155 {
     }
 
     /// @notice Verifies the validity of a signature
-    /// @dev The message to validate the signature is generated on the fly with a random number, the string of an NFT, and this contract's address.
-    /// @param _userAddress  The address of the user
+    /// @dev The message to validate the signature is generated on the fly with an Id, a signature and this contract's address.
     /// @param _timestampId The id of the timestamp of the nft
     /// @param signature Signature to be verified
     /// @return bool Boolean value indicating whether the signature is valid or not
     function verify(
-        address _userAddress,
         uint256 _timestampId,
         bytes memory signature
     ) public view returns (bool) {
-        bytes32 messageHash = getHash(_userAddress, _timestampId);
+        bytes32 messageHash = getHash(msg.sender, _timestampId);
         bytes32 ethSignedMessageHash = getEthSignedMessageHash(messageHash);
-        return recoverSigner(ethSignedMessageHash, signature) == owner;
+        return recoverSigner(ethSignedMessageHash, signature) == owner();
 }
 
     /// @notice gets a signer out of a signature and the hash of the signed message
@@ -129,17 +132,33 @@ contract VanarNFTHandler is ERC1155 {
         // implicitly return (r, s, v)
     }
 
-    /// @param newBaseURI The new ERC1155 of the tokens
-    function setBaseURI(string memory newBaseURI) external {
-        require(owner == msg.sender, "Only the owner can do this");
-        _setURI(newBaseURI);
+    /// @notice Function to check if user already minted NFT
+    /// @param _userAddress The address of the user
+    /// @param _timestampId The address of the user
+    /// @return _isMinted Is the nft minted?
+    function getAlreadyMintedTimestampNFT(address _userAddress, uint256 _timestampId) external view returns (bool _isMinted) {
+        return alreadyMintedTimestampNFT[_userAddress][_timestampId];
+    }
+
+    /// @notice Function to update the base url
+    /// @param _newBaseURI The new ERC1155 of the tokens
+    function setBaseURI(string memory _newBaseURI) onlyOwner() external {
+        _setURI(_newBaseURI);
+    }
+
+
+    /// @notice Function to get the URI of the NFT
+    /// @param _id The new ERC1155 of the tokens
+    function uri(uint256 _id) public view virtual override returns (string memory) {
+        return string.concat(
+            super.uri(_id), "/" , _id.toString(), ".json");
     }
 
     /// @notice Modifier that checks if user already minted the NFT of the timestamp that he wants
     /// @param _user The user that is trying to mint the NFT
     /// @param _timestampId The id of the timestamp of the NFT
     modifier checkIfUserAlreadyMintedTimestampNFT(address _user, uint256 _timestampId) {
-        require(_alreadyMintedTimestampNFT[_user][_timestampId] == false, "The user already minted this NFT");
+        require(alreadyMintedTimestampNFT[_user][_timestampId] == false, "The user already minted this NFT");
         _;
     }
 }

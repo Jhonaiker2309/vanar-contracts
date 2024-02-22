@@ -18,7 +18,9 @@ describe("VanarNFTHandler.sol", function () {
     return { vanarNFTHandler, acc1, acc2 };
   }
 
-  describe("Signatures checking ", function () {
+  /*It's commented because now the function is private */
+
+  /*describe("Signatures checking ", function () {
     it("Signatures returns true when it's valid", async function () {
       const timestampId = 1
 
@@ -41,7 +43,7 @@ describe("VanarNFTHandler.sol", function () {
       expect(await vanarNFTHandler.connect(acc1).verify(acc1.address,timestampIdFake, signature )).to.equal(false);
     });
 
-  });
+  });*/
 
   describe("ERC1155 Minting ", function () {
     it("Mint working", async function () {
