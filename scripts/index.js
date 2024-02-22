@@ -1,5 +1,3 @@
-const { run } = require("hardhat");
-
 const CONTRACT_NAME = 'VanarNFTHandler';
 
 const deploy = async () => {

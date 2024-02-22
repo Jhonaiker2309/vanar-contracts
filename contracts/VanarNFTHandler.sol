@@ -33,7 +33,7 @@ contract VanarNFTHandler is ERC1155, Ownable {
     /// @param _timestampId The id of the timestamp of the nft
     /// @param signature A signature give for the owner to allow the user to mint
     function mint(uint256 _timestampId, bytes memory signature) checkIfUserAlreadyMintedTimestampNFT(msg.sender, _timestampId) public {
-        require(verify(_timestampId, signature) == true, "Signature not valid");  
+        require(verify(msg.sender, _timestampId, signature) == true, "Signature not valid");  
         require(isSignatureUsed[signature] == false, "Signature was already used");    
         alreadyMintedTimestampNFT[msg.sender][_timestampId] = true;  
         isSignatureUsed[signature] = true;
@@ -70,16 +70,18 @@ contract VanarNFTHandler is ERC1155, Ownable {
 
     /// @notice Verifies the validity of a signature
     /// @dev The message to validate the signature is generated on the fly with an Id, a signature and this contract's address.
+    /// @param _userAddress The address of the user
     /// @param _timestampId The id of the timestamp of the nft
-    /// @param signature Signature to be verified
+    /// @param _signature Signature to be verified
     /// @return bool Boolean value indicating whether the signature is valid or not
     function verify(
+        address _userAddress, 
         uint256 _timestampId,
-        bytes memory signature
-    ) public view returns (bool) {
-        bytes32 messageHash = getHash(msg.sender, _timestampId);
+        bytes memory _signature
+    ) private view returns (bool) {
+        bytes32 messageHash = getHash(_userAddress, _timestampId);
         bytes32 ethSignedMessageHash = getEthSignedMessageHash(messageHash);
-        return recoverSigner(ethSignedMessageHash, signature) == owner();
+        return recoverSigner(ethSignedMessageHash, _signature) == owner();
 }
 
     /// @notice gets a signer out of a signature and the hash of the signed message
