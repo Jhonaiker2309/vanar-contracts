@@ -29,6 +29,7 @@
     "hardhat-contract-sizer": "^2.10.0",
     "hardhat-deploy": "^0.11.45",
     "keccak256": "^1.0.6",
-    "merkletreejs": "^0.3.11"
+    "merkletreejs": "^0.3.11",
+    "truffle": "^5.11.5"
   }
 }

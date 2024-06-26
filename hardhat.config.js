@@ -32,6 +32,10 @@ const config = {
     sepolia: {
       url: `https://sepolia.infura.io/v3/${process.env.INFURA_API_KEY}`,
       accounts: [process.env.INFURA_PRIVKEY],
+    },
+    vanguard: {
+      url: `https://rpc-vanguard.vanarchain.com`,
+      accounts: [process.env.INFURA_PRIVKEY],      
     }
   },
   solidity: {
