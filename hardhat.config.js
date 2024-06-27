@@ -1,10 +1,9 @@
 require('@typechain/hardhat');
 require('@nomiclabs/hardhat-ethers');
 require('hardhat-deploy');
-require('@nomiclabs/hardhat-waffle');
-require('@nomiclabs/hardhat-etherscan');
 require('hardhat-contract-sizer');
 require('solidity-coverage');
+require("@nomicfoundation/hardhat-toolbox");
 
 const env = require('dotenv');
 
