@@ -1,20 +1,3 @@
-# Solutions to the whitelisting problem
+# Velocity smart contracts
 
-There are differend ways to whitelist users. This repo demonstrates three different options.
-
-The contracts and the tests both are named `Imp[index][whitelistingMethod].[js/sol]`
-
-More implementations will be added with time.
-
-### Current implementations
-
-1 - traditional mapping
-
-2 - signatures
-
-3 - merkle trees
-
-### Implementations to be added:
-
-- Ownership of NFTs
-- Balance of token amount
+Signature-based distribution system for NFTs and ERC20 assets.
