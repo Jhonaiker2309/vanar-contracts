@@ -1,0 +1,77 @@
+[
+  {
+    "name": "VanarRouletteHandler",
+    "symbol": "",
+    "address": "0xE59BB55a8D4f044b68BAe52544F16920083Bdb17"
+  },
+  {
+    "name": "VanarGold",
+    "symbol": "VG",
+    "address": "0xE02f3F8d3803AE44877D39180e42F35D55f6c34D"
+  },
+  {
+    "name": "JackpotPlatinum10000",
+    "symbol": "JP10K",
+    "address": "0x43F255aDEb8C89296D0e218e359BB7Ef3E8211b1"
+  },
+  {
+    "name": "JackpotPlatinum1000",
+    "symbol": "JP1K",
+    "address": "0x6bb335E2CCEE97F8447b6453D1B45e50aA80F6bF"
+  },
+  {
+    "name": "PVPGold",
+    "symbol": "PVP",
+    "address": "0xA1b053E272E5a19C8865B79FbB6352890B0610e1"
+  },
+  {
+    "name": "AuriSwapGold",
+    "symbol": "ASG",
+    "address": "0x67AE59aB6e7d51C054D9d3CAF25F4FD15a0f217D"
+  },
+  {
+    "name": "AuriSwapSilver",
+    "symbol": "ASS",
+    "address": "0x1Faa3949B3013668742dc722164F786909FA92d8"
+  },
+  {
+    "name": "BazaaGold",
+    "symbol": "BG",
+    "address": "0x18E0C37C90712a78c8Bd00324258f4164f3BaD55"
+  },
+  {
+    "name": "BazaaSilver",
+    "symbol": "BS",
+    "address": "0x29f9804c3C57Ef5cE19C2363630DfC88Ca4d7542"
+  },
+  {
+    "name": "BazaaSilverVIP",
+    "symbol": "BSVIP",
+    "address": "0x189B6022d44D62c9623Afd91f16d7dB33f1C2690"
+  },
+  {
+    "name": "MaiansSilver",
+    "symbol": "MS",
+    "address": "0x5ed5D7248E0B73DE59b9adBf75316988BadAc479"
+  },
+  {
+    "name": "MaiansGold",
+    "symbol": "MG",
+    "address": "0x6D048843ed118aE5FD466E4e231B23329c2f831a"
+  },
+  {
+    "name": "NitroLeagueSilver",
+    "symbol": "NLS",
+    "address": "0xcc87d6fe265110db55049fC754D2323fdc977fe0"
+  },
+  {
+    "name": "NitroLeagueGold",
+    "symbol": "NLG",
+    "address": "0x9F3B06E5a73b3180c96d8C00786549dE8EEDFB2f"
+  },
+  {
+    "name": "SpaceIDGold",
+    "symbol": "SIG",
+    "address": "0xf87c0cc338975e55293014b54DB5cBc8Fc9ecA1b"
+  }
+]
