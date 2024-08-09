@@ -1,23 +1,23 @@
 const fs = require('fs');
 const { ethers } = require('hardhat');
 
-const baseUri = "https://vanar-backend-six.vercel.app/";
+const baseUri = "https://vanar-backend.vercel.app/metadata/";
 
 const nftContracts = [
-    { name: "VanarGold", symbol: "VG", uri: `${baseUri}vanarGold` },
-    { name: "JackpotPlatinum10000", symbol: "JP10K", uri: `${baseUri}platinumVanar10k` },
-    { name: "JackpotPlatinum1000", symbol: "JP1K", uri: `${baseUri}platinumVanar1k` },
-    { name: "PVPGold", symbol: "PVP", uri: `${baseUri}pvpGold` },
-    { name: "AuriSwapGold", symbol: "ASG", uri: `${baseUri}auriSwapGold` },
-    { name: "AuriSwapSilver", symbol: "ASS", uri: `${baseUri}auriSwapSilver` },
-    { name: "BazaaGold", symbol: "BG", uri: `${baseUri}bazaaGold` },
-    { name: "BazaaSilver", symbol: "BS", uri: `${baseUri}bazaaSilver` },
-    { name: "BazaaSilverVIP", symbol: "BSVIP", uri: `${baseUri}baazaSilverLaunchpad` },
-    { name: "MaiansSilver", symbol: "MS", uri: `${baseUri}maiansSilver` },
-    { name: "MaiansGold", symbol: "MG", uri: `${baseUri}maiansGold` },
-    { name: "NitroLeagueSilver", symbol: "NLS", uri: `${baseUri}nitroCardSilver` },
-    { name: "NitroLeagueGold", symbol: "NLG", uri: `${baseUri}nitroCardGold` },
-    { name: "SpaceIDGold", symbol: "SIG", uri: `${baseUri}spaceIdGold` }
+    { name: "Vanar Voucher Gold", symbol: "VG", uri: `${baseUri}vanarGold` },
+    { name: "Jackpot $10k", symbol: "JP10K", uri: `${baseUri}platinumVanar10k` },
+    { name: "Jackpot $1k", symbol: "JP1K", uri: `${baseUri}platinumVanar1k` },
+    { name: "PVP Voucher Gold", symbol: "PVP", uri: `${baseUri}pvpGold` },
+    { name: "AuriSwap Voucher Gold", symbol: "ASG", uri: `${baseUri}auriSwapGold` },
+    { name: "AuriSwap Voucher Silver", symbol: "ASS", uri: `${baseUri}auriSwapSilver` },
+    { name: "Bazaa Voucher Gold", symbol: "BG", uri: `${baseUri}bazaaGold` },
+    { name: "Bazaa Voucher Silver", symbol: "BS", uri: `${baseUri}bazaaSilver` },
+    { name: "Bazaa VIP Pass Silver", symbol: "BSVIP", uri: `${baseUri}baazaSilverLaunchpad` },
+    { name: "Maians Website Voucher Silver", symbol: "MS", uri: `${baseUri}maiansSilver` },
+    { name: "Maians Website Voucher Gold", symbol: "MG", uri: `${baseUri}maiansGold` },
+    { name: "Nitro League NFT Silver", symbol: "NLS", uri: `${baseUri}nitroCardSilver` },
+    { name: "Nitro League NFT Gold", symbol: "NLG", uri: `${baseUri}nitroCardGold` },
+    { name: "SpaceID NFT Gold", symbol: "SIG", uri: `${baseUri}spaceIdGold` }
 ];
 
 const deploy = async () => {

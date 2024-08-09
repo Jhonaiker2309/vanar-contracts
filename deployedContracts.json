@@ -2,76 +2,76 @@
   {
     "name": "VanarRouletteHandler",
     "symbol": "",
-    "address": "0xE59BB55a8D4f044b68BAe52544F16920083Bdb17"
+    "address": "0x98E06912EF2857DD8ecfB8AB3428dbA4849DB3A6"
   },
   {
-    "name": "VanarGold",
+    "name": "Vanar Voucher Gold",
     "symbol": "VG",
-    "address": "0xE02f3F8d3803AE44877D39180e42F35D55f6c34D"
+    "address": "0x9f2aA44211A94f5462dA95A7ad6653cF21b7271a"
   },
   {
-    "name": "JackpotPlatinum10000",
+    "name": "Jackpot $10k",
     "symbol": "JP10K",
-    "address": "0x43F255aDEb8C89296D0e218e359BB7Ef3E8211b1"
+    "address": "0x0668022CAE704C59D2feFeC8992e9eD3cC9F36Fc"
   },
   {
-    "name": "JackpotPlatinum1000",
+    "name": "Jackpot $1k",
     "symbol": "JP1K",
-    "address": "0x6bb335E2CCEE97F8447b6453D1B45e50aA80F6bF"
+    "address": "0x8f5c8A172Be4Dd702f92Ed5B76886743E44b899A"
   },
   {
-    "name": "PVPGold",
+    "name": "PVP Voucher Gold",
     "symbol": "PVP",
-    "address": "0xA1b053E272E5a19C8865B79FbB6352890B0610e1"
+    "address": "0x4799E15E023533b972e50FAC8147F0feD3D935A8"
   },
   {
-    "name": "AuriSwapGold",
+    "name": "AuriSwap Voucher Gold",
     "symbol": "ASG",
-    "address": "0x67AE59aB6e7d51C054D9d3CAF25F4FD15a0f217D"
+    "address": "0xad58CC730E8eE111ABeF6436c70262DA41Fb1553"
   },
   {
-    "name": "AuriSwapSilver",
+    "name": "AuriSwap Voucher Silver",
     "symbol": "ASS",
-    "address": "0x1Faa3949B3013668742dc722164F786909FA92d8"
+    "address": "0xBF1d81C67E6De3FbDb3621fB998806a1e44b4F02"
   },
   {
-    "name": "BazaaGold",
+    "name": "Bazaa Voucher Gold",
     "symbol": "BG",
-    "address": "0x18E0C37C90712a78c8Bd00324258f4164f3BaD55"
+    "address": "0x0F990D5fE8B2D0aD14cBad8231F02CE9B335b58E"
   },
   {
-    "name": "BazaaSilver",
+    "name": "Bazaa Voucher Silver",
     "symbol": "BS",
-    "address": "0x29f9804c3C57Ef5cE19C2363630DfC88Ca4d7542"
+    "address": "0x02b0Df7dcAe96c9DC0D865C55317e470A2bED4Aa"
   },
   {
-    "name": "BazaaSilverVIP",
+    "name": "Bazaa VIP Pass Silver",
     "symbol": "BSVIP",
-    "address": "0x189B6022d44D62c9623Afd91f16d7dB33f1C2690"
+    "address": "0x671010F1f51F98D700a14Cc600045b174b3E6C76"
   },
   {
-    "name": "MaiansSilver",
+    "name": "Maians Website Voucher Silver",
     "symbol": "MS",
-    "address": "0x5ed5D7248E0B73DE59b9adBf75316988BadAc479"
+    "address": "0xFEaF6c3666d0128f5F0526171E6eF78A4f96444f"
   },
   {
-    "name": "MaiansGold",
+    "name": "Maians Website Voucher Gold",
     "symbol": "MG",
-    "address": "0x6D048843ed118aE5FD466E4e231B23329c2f831a"
+    "address": "0x9d4828b6246F36a9e21a90aDDAbe349a11560b2f"
   },
   {
-    "name": "NitroLeagueSilver",
+    "name": "Nitro League NFT Silver",
     "symbol": "NLS",
-    "address": "0xcc87d6fe265110db55049fC754D2323fdc977fe0"
+    "address": "0xa2Ef2cfFe06f6ecaF6D70750E82622be4D1d53a9"
   },
   {
-    "name": "NitroLeagueGold",
+    "name": "Nitro League NFT Gold",
     "symbol": "NLG",
-    "address": "0x9F3B06E5a73b3180c96d8C00786549dE8EEDFB2f"
+    "address": "0x399Ac1bD2f49EE26F4B8459312dEdA3c0b037d0b"
   },
   {
-    "name": "SpaceIDGold",
+    "name": "SpaceID NFT Gold",
     "symbol": "SIG",
-    "address": "0xf87c0cc338975e55293014b54DB5cBc8Fc9ecA1b"
+    "address": "0x338e422f74f2cD5002059B5Db3e1FB0f00fF8e43"
   }
 ]
